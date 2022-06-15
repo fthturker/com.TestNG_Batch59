@@ -31,7 +31,7 @@ public class C05_Assertions extends TestBase {
         Assert.assertTrue(sonucYaziElementi.isDisplayed());
 
         //6- arama sonucunun Nutella icerdigini test edin
-        Assert.assertTrue(sonucYaziElementi.getText().contains("Kutella"));
+        Assert.assertTrue(sonucYaziElementi.getText().contains("Nutella"));
 
     }
 }

@@ -42,7 +42,7 @@ public class C06_SoftAssert extends TestBase {
         softAssert.assertTrue(sonucYaziElementi.isDisplayed());
 
         //6- arama sonucunun Nutella icerdigini test edin
-        softAssert.assertTrue(sonucYaziElementi.getText().contains("Kutella"),"sonuc yazisi icermiyor");
+        softAssert.assertTrue(sonucYaziElementi.getText().contains("Nutella"),"sonuc yazisi icermiyor");
 
         //softassert'e bitis satirini soylemek icin assertAll() kullanilir
         // bu satir yazilmazsa assertion gorevi yapilmamis olur

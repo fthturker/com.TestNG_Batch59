@@ -18,7 +18,7 @@ public class C03_priority extends TestBase {
         driver.get("https://www.amazon.com");
         System.out.println(driver.getCurrentUrl());
     }
-    @Test(priority = -2)
+    @Test(priority = -6)
     public void test02() {
         driver.get("https://www.bestbuy.com");
         System.out.println(driver.getCurrentUrl());
