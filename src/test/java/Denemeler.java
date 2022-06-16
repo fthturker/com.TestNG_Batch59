@@ -19,24 +19,18 @@ import utulities.TestBase;
 import java.time.Duration;
 
 public class Denemeler {
-    BrcPage brcPage=new BrcPage();
-
     @Test
-    public void positiveLoginTest() {
-        // Bir test method olustur positiveLoginTest()
-        //		 https://www.bluerentalcars.com/ adresine git
-
-        //		login butonuna bas
-
-        // test data user email: customer@bluerentalcars.com ,
-
-        // test data password : 12345
-        ;
-        // login butonuna tiklayin
-
-        // Degerleri girildiginde sayfaya basarili sekilde girilebildigini test et
-
-
+    public void facebook() {
+        Driver.getDriver().get("https://www.facebook.com");
     }
+    @Test(dependsOnMethods = "facebook")
+    public void google() {
+        Driver.getDriver().get("https://www.google.com");
+    }
+    @Test(dependsOnMethods = "google")
+    public void amazon() {
+        Driver.getDriver().get("https://www.amazon.com");
+    }
+
     }
 
