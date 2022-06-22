@@ -14,12 +14,29 @@ public class TradllyinPage {
     @FindBy(xpath = "//li[@id='menu-item-1074']//a[contains(text(),'Hesabım')]")
     public WebElement myAccount;
 
+    @FindBy (xpath = "//span[contains(text(),'Giriş Yap')]")
+    public WebElement giris;
+
     @FindBy(xpath = "//input[@id='username']")
     public WebElement username;
 
     @FindBy(xpath = "//input[@id='password']")
     public WebElement password;
 
-    @FindBy(xpath="(//button[@name='login'])[1]")
+    @FindBy(xpath = "//button[contains(text(),'Giriş Yap')]")
     public WebElement login;
+
+    @FindBy(xpath = "//a[normalize-space()='Store Manager']")
+    public WebElement storeManager;
+
+    @FindBy(xpath = "//span[normalize-space()='Kuponlar']")
+    public WebElement coupons;
+
+    @FindBy(xpath = "//span[contains(text(),'Yeni ekle')]")
+    public WebElement addNew;
+
+    @FindBy(xpath = "//div[@id='coupons_manage_limit']")
+    public WebElement limit;
+
+
 }
