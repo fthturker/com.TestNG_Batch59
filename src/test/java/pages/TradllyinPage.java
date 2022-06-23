@@ -23,14 +23,16 @@ public class TradllyinPage {
     @FindBy(xpath = "//input[@id='password']")
     public WebElement password;
 
-    @FindBy(xpath = "//button[contains(text(),'Giriş Yap')]")
+    @FindBy(xpath = "//button[@name='login']")
     public WebElement login;
 
     @FindBy(xpath = "//a[normalize-space()='Store Manager']")
     public WebElement storeManager;
 
-    @FindBy(xpath = "//span[normalize-space()='Kuponlar']")
+    @FindBy(xpath = "//a[@href='https://tradylinn.com/store-manager/coupons-manage/']")
     public WebElement coupons;
+//span[@class='wcfm_sub_menu_items wcfm_sub_menu_items_coupon_manage moz_class']//a[normalize-space()='Yeni ekle']
+
 
     @FindBy(xpath = "//span[contains(text(),'Yeni ekle')]")
     public WebElement addNew;
