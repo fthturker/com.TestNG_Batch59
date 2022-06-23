@@ -1,13 +1,13 @@
 
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
 import pages.TradllyinPage;
 import utulities.ConfigReader;
 import utulities.Driver;
 
-import java.security.Key;
+
 
 
 public class Denemeler  {
@@ -38,9 +38,10 @@ public class Denemeler  {
         tradllyinPage.storeManager.click();
         //Driver.getDriver().findElement(By.xpath("//a[normalize-space()='Store Manager']")).click();
         //5-Vendor "Coupons" butonuna tiklanir
+        tradllyinPage.coupons.click();
 
-        Driver.getDriver().findElement(By.xpath("//a[@href='https://tradylinn.com/store-manager/coupons-manage/']")).sendKeys(Keys.ENTER);
 
+        Thread.sleep(3000);
         //6- Vendor "add new "butonuna tiklanir
         //tradllyinPage.addNew.click();
         //Thread.sleep(3000);

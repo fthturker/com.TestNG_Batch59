@@ -29,12 +29,10 @@ public class TradllyinPage {
     @FindBy(xpath = "//a[normalize-space()='Store Manager']")
     public WebElement storeManager;
 
-    @FindBy(xpath = "//a[@href='https://tradylinn.com/store-manager/coupons-manage/']")
+    @FindBy(xpath = "(//a[@class='wcfm_menu_item '])[5]")
     public WebElement coupons;
-//span[@class='wcfm_sub_menu_items wcfm_sub_menu_items_coupon_manage moz_class']//a[normalize-space()='Yeni ekle']
 
-
-    @FindBy(xpath = "//span[contains(text(),'Yeni ekle')]")
+    @FindBy(xpath = "//a[@id='add_new_coupon_dashboard']")
     public WebElement addNew;
 
     @FindBy(xpath = "//div[@id='coupons_manage_limit']")
