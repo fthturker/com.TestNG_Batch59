@@ -10,7 +10,7 @@ import utulities.Driver;
 
 
 
-public class Denemeler  {
+public class US15_01_02_03 {
     TradllyinPage tradllyinPage=new TradllyinPage();
 
     @Test
@@ -38,13 +38,15 @@ public class Denemeler  {
         tradllyinPage.addNew.click();
 
         //7- Vendor "limit" butonuna tiklanir
-        tradllyinPage.limit.sendKeys(Keys.ARROW_DOWN);
 
-        //tradllyinPage.limit.click();
-        tradllyinPage.limit.sendKeys(Keys.ENTER);
         Thread.sleep(3000);
+        //tradllyinPage.limit.click();
+        tradllyinPage.limit.sendKeys(Keys.ARROW_DOWN);
+        tradllyinPage.limit.sendKeys(Keys.ENTER);
+
 
         //8- Vendor "Usage limit per coupon" limiti bilgileri eklenebilir
+
 
 
         Driver.closeDriver();

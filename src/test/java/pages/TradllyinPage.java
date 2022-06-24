@@ -37,8 +37,26 @@ public class TradllyinPage {
 
 
 
-    @FindBy(xpath = "//div[@class='collapse wcfm-collapse']//div[5]")
+
+
+    @FindBy(xpath = "//div[@id='coupons_manage_limit']")
     public WebElement limit;
 
-//div[@id='coupons_manage_limit']
+    @FindBy(xpath = "//input[@id='usage_limit']")
+    public WebElement perlimit;
+
+    @FindBy(xpath = "//input[@id='limit_usage_to_x_items']")
+    public WebElement usageLimit;
+
+    @FindBy(xpath = "//input[@id='usage_limit_per_user']")
+    public WebElement perUser;
+
+    // US16_01_02_03
+    @FindBy(xpath = "//font[contains(text(),'customers')]")
+    public WebElement customers;
+
+
+
+    @FindBy(xpath = "//td[@class='dataTables_empty']")
+    public WebElement sonSiparis;
 }
