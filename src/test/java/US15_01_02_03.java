@@ -1,13 +1,11 @@
-
-
-
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.TradllyinPage;
 import utulities.ConfigReader;
 import utulities.Driver;
-
-
 
 
 public class US15_01_02_03 {
@@ -38,18 +36,29 @@ public class US15_01_02_03 {
         tradllyinPage.addNew.click();
 
         //7- Vendor "limit" butonuna tiklanir
+        Actions action=new Actions(Driver.getDriver());
 
-        Thread.sleep(3000);
-        //tradllyinPage.limit.click();
-        tradllyinPage.limit.sendKeys(Keys.ARROW_DOWN);
-        tradllyinPage.limit.sendKeys(Keys.ENTER);
+        action.sendKeys(ConfigReader.getProperty("//div[@id='coupons_manage_limit']"))
+                .sendKeys(Keys.ENTER)
+                .sendKeys(Keys.TAB).perform();
+
+
+
 
 
         //8- Vendor "Usage limit per coupon" limiti bilgileri eklenebilir
 
+        action.sendKeys(Keys.TAB);
+        tradllyinPage.usageLimitCoupon.sendKeys("5");
+        tradllyinPage.usLimitItems.sendKeys("5");
+        tradllyinPage.perUser.sendKeys("5");
+
+        Assert.assertTrue(tradllyinPage.usageLimitCoupon.getAttribute("value").contains("5"));
+        Assert.assertTrue(tradllyinPage.usLimitItems.getAttribute("value").contains("5"));
+        Assert.assertTrue(tradllyinPage.perUser.getAttribute("value").contains("5"));
+        //Driver.closeDriver();
 
 
-        Driver.closeDriver();
 
     }
 }

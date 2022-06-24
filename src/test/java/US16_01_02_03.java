@@ -34,9 +34,9 @@ public class US16_01_02_03 {
             //5-Vendor "customers" butonuna tiklanir
             Thread.sleep(3000);
             Actions actions=new Actions(Driver.getDriver());
-            actions.sendKeys(Keys.PAGE_DOWN)
+            actions.sendKeys(Keys.PAGE_DOWN).perform();
 
-            //tradllyinPage.customers.sendKeys(Keys.ENTER);
+            tradllyinPage.customers.click();
             Thread.sleep(3000);
             //6- kayitli kisinin son siparisi gorulebilmeli
 
