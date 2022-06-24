@@ -35,8 +35,10 @@ public class TradllyinPage {
     @FindBy(xpath = "//a[@id='add_new_coupon_dashboard']")
     public WebElement addNew;
 
-    @FindBy(xpath = "//div[@id='coupons_manage_limit']")
+
+
+    @FindBy(xpath = "//div[@class='collapse wcfm-collapse']//div[5]")
     public WebElement limit;
 
-
+//div[@id='coupons_manage_limit']
 }

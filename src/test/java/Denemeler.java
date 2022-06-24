@@ -19,34 +19,31 @@ public class Denemeler  {
 
         //1- Siteye git:https://tradylinn.com/ gidilebilir
         Driver.getDriver().get(ConfigReader.getProperty("tradllyinnUrl"));
+
         //2 -Vendor "My Account" butonuna tiklanir
         tradllyinPage.myAccount.click();
-        //Driver.getDriver().findElement(By.xpath("//li[@id='menu-item-1074']//a[contains(text(),'Hesabım')]")).click();
-        //tradllyinPage.giris.click();
+
         //3- Vendor "username or email address" ve "password" bilgileri girer ve "login" butonuna tiklanir
-        //Driver.getDriver().findElement(By.xpath("//input[@id='username']")).sendKeys(ConfigReader.getProperty("tradllyinnEmail"));
-        //Driver.getDriver().findElement(By.xpath("//input[@id='password']")).sendKeys(ConfigReader.getProperty("tradllyinnPassword"));
-        //Driver.getDriver().findElement(By.xpath("//button[@name='login']")).sendKeys(Keys.ENTER);
-
-
         tradllyinPage.username.sendKeys(ConfigReader.getProperty("tradllyinnEmail"));
         tradllyinPage.password.sendKeys(ConfigReader.getProperty("tradllyinnPassword"));
         tradllyinPage.login.sendKeys(Keys.ENTER);
-        //Thread.sleep(3000);
-        //tradllyinPage.myAccount.click();
+
         //4-Vendor "Store Manager" butonuna tiklanir
         tradllyinPage.storeManager.click();
-        //Driver.getDriver().findElement(By.xpath("//a[normalize-space()='Store Manager']")).click();
+
         //5-Vendor "Coupons" butonuna tiklanir
-        tradllyinPage.coupons.click();
+        tradllyinPage.coupons.sendKeys(Keys.ENTER);
 
-
-        Thread.sleep(3000);
         //6- Vendor "add new "butonuna tiklanir
-        //tradllyinPage.addNew.click();
-        //Thread.sleep(3000);
+        tradllyinPage.addNew.click();
+
         //7- Vendor "limit" butonuna tiklanir
+        tradllyinPage.limit.sendKeys(Keys.ARROW_DOWN);
+
         //tradllyinPage.limit.click();
+        tradllyinPage.limit.sendKeys(Keys.ENTER);
+        Thread.sleep(3000);
+
         //8- Vendor "Usage limit per coupon" limiti bilgileri eklenebilir
 
 
