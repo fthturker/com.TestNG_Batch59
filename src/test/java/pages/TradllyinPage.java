@@ -36,15 +36,8 @@ public class TradllyinPage {
     @FindBy(xpath = "//a[@id='add_new_coupon_dashboard']")
     public WebElement addNew;
 
-
-
-
-
-
     @FindBy(xpath = "(//div[@id='coupons_manage_limit'])[1]")
     public WebElement limit;
-
-
 
     @FindBy(xpath ="//input[@id='usage_limit']")
     public WebElement usageLimitCoupon;
@@ -65,10 +58,45 @@ public class TradllyinPage {
 
 
     // US16_01_02_03
-    @FindBy(xpath = "//font[contains(text(),'customers')]")
+    @FindBy(xpath = "//span[contains(text(),'müşteriler')]")
     public WebElement customers;
-
+//font[contains(text(),'müşteriler')]
 
     @FindBy(xpath = "//td[@class='dataTables_empty']")
     public WebElement sonSiparis;
+
+    //Case 02
+    @FindBy(xpath = "//span[contains(text(),'Yeni ekle')]")
+    public WebElement newCustomers;
+
+    @FindBy(xpath ="//input[@id='user_name']")
+    public WebElement newUsername;
+
+    @FindBy(xpath = "//input[@id='user_email']")
+    public WebElement newEmail;
+
+    @FindBy(xpath = "//input[@id='first_name']")
+    public WebElement newName;
+
+    @FindBy(xpath = "//input[@id='last_name']")
+    public WebElement newLastname;
+
+    @FindBy (xpath = "//input[@id='wcfm_customer_submit_button']")
+    public WebElement submit;
+
+
+
+
+
+
+
+
+    @FindBy(xpath = "//span[normalize-space()='Print']")
+    public WebElement printButon;
+
+    @FindBy(xpath = "//span[normalize-space()='Excel']")
+    public WebElement excelButon;
+
+    @FindBy(xpath = "//span[normalize-space()='CSV']")
+    public WebElement csaButon;
 }

@@ -34,6 +34,7 @@ public class US15_01_02_03 {
         //5-Vendor "Coupons" butonuna tiklanir
         tradllyinPage.coupons.sendKeys(Keys.ENTER);
         ReusableMethods.waitFor(10);
+
         //6- Vendor "add new "butonuna tiklanir
         tradllyinPage.addNew.click();
 
