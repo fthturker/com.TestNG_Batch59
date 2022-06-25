@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utulities.Driver;
-import utulities.ReusableMethods;
+
 
 public class TradllyinPage {
     public TradllyinPage() {
@@ -41,7 +41,7 @@ public class TradllyinPage {
 
 
 
-    @FindBy(id = "//div[@id='coupons_manage_limit']")
+    @FindBy(xpath = "(//div[@id='coupons_manage_limit'])[1]")
     public WebElement limit;
 
 

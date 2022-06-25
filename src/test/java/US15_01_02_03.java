@@ -1,4 +1,5 @@
 import org.checkerframework.checker.units.qual.C;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -6,6 +7,7 @@ import org.testng.annotations.Test;
 import pages.TradllyinPage;
 import utulities.ConfigReader;
 import utulities.Driver;
+import utulities.ReusableMethods;
 
 
 public class US15_01_02_03 {
@@ -31,24 +33,23 @@ public class US15_01_02_03 {
 
         //5-Vendor "Coupons" butonuna tiklanir
         tradllyinPage.coupons.sendKeys(Keys.ENTER);
-
+        ReusableMethods.waitFor(10);
         //6- Vendor "add new "butonuna tiklanir
         tradllyinPage.addNew.click();
 
         //7- Vendor "limit" butonuna tiklanir
+
+
         Actions action=new Actions(Driver.getDriver());
-
-        action.sendKeys(ConfigReader.getProperty("//div[@id='coupons_manage_limit']"))
-                .sendKeys(Keys.ENTER)
-                .sendKeys(Keys.TAB).perform();
-
-
+        action.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.waitFor(10);
+        tradllyinPage.limit.click();
 
 
 
         //8- Vendor "Usage limit per coupon" limiti bilgileri eklenebilir
 
-        action.sendKeys(Keys.TAB);
+        //action.sendKeys(Keys.TAB);
         tradllyinPage.usageLimitCoupon.sendKeys("5");
         tradllyinPage.usLimitItems.sendKeys("5");
         tradllyinPage.perUser.sendKeys("5");
