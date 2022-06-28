@@ -11,7 +11,7 @@ public class TradllyinPage {
         PageFactory.initElements(Driver.getDriver(), this);
 
     }
-
+    //US15_01_02_03
     @FindBy(xpath = "//li[@id='menu-item-1074']//a[contains(text(),'Hesabım')]")
     public WebElement myAccount;
 
@@ -50,22 +50,14 @@ public class TradllyinPage {
 
 
 
-
-
-
-
-
-
-
     // US16_01_02_03
     @FindBy(xpath = "//span[contains(text(),'müşteriler')]")
     public WebElement customers;
-//font[contains(text(),'müşteriler')]
 
     @FindBy(xpath = "//td[@class='dataTables_empty']")
     public WebElement sonSiparis;
 
-    //Case 02
+
     @FindBy(xpath = "//span[contains(text(),'Yeni ekle')]")
     public WebElement newCustomers;
 
@@ -83,13 +75,6 @@ public class TradllyinPage {
 
     @FindBy (xpath = "//input[@id='wcfm_customer_submit_button']")
     public WebElement submit;
-
-
-
-
-
-
-
 
     @FindBy(xpath = "//span[normalize-space()='Print']")
     public WebElement printButon;
