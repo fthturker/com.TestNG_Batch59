@@ -1,66 +1,68 @@
-import org.checkerframework.checker.units.qual.C;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.TradllyinPage;
+import pages.US_15_16_Page;
 import utulities.ConfigReader;
 import utulities.Driver;
 import utulities.ReusableMethods;
+import utulities.TestBaseRapor;
 
 
-public class US15_01_02_03 {
-    TradllyinPage tradllyinPage=new TradllyinPage();
+public class US15_01_02_03 extends TestBaseRapor {
+    US_15_16_Page us_15_16_page = new US_15_16_Page();
 
     @Test
-    public void positiveLoginTest() throws InterruptedException {
-
+    public void US15_TC_01_02_03() throws InterruptedException {
 
         //1- Siteye git:https://tradylinn.com/ gidilebilir
         Driver.getDriver().get(ConfigReader.getProperty("tradllyinnUrl"));
+        extentReports.createTest("US15_TC_01_02_03","Gecerli email ve sifre ile giris yapabilmeli");
 
         //2 -Vendor "My Account" butonuna tiklanir
-        tradllyinPage.myAccount.click();
+        us_15_16_page.myAccount.click();
 
         //3- Vendor "username or email address" ve "password" bilgileri girer ve "login" butonuna tiklanir
-        tradllyinPage.username.sendKeys(ConfigReader.getProperty("tradllyinnEmail"));
-        tradllyinPage.password.sendKeys(ConfigReader.getProperty("tradllyinnPassword"));
-        tradllyinPage.login.sendKeys(Keys.ENTER);
+        us_15_16_page.username.sendKeys(ConfigReader.getProperty("tradllyinnEmail"));
+        us_15_16_page.password.sendKeys(ConfigReader.getProperty("tradllyinnPassword"));
+        ReusableMethods.waitFor(1);
+        us_15_16_page.login.sendKeys(Keys.ENTER);
 
         //4-Vendor "Store Manager" butonuna tiklanir
-        tradllyinPage.storeManager.click();
+        us_15_16_page.storeManager.click();
 
         //5-Vendor "Coupons" butonuna tiklanir
-        tradllyinPage.coupons.sendKeys(Keys.ENTER);
+        us_15_16_page.coupons.sendKeys(Keys.ENTER);
         ReusableMethods.waitFor(10);
 
         //6- Vendor "add new "butonuna tiklanir
-        tradllyinPage.addNew.click();
+        us_15_16_page.addNew.click();
 
         //7- Vendor "limit" butonuna tiklanir
-
-
-        Actions action=new Actions(Driver.getDriver());
+        Actions action = new Actions(Driver.getDriver());
         action.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.waitFor(10);
-        tradllyinPage.limit.click();
-
+        us_15_16_page.limit.click();
 
 
         //8- Vendor "Usage limit per coupon" limiti bilgileri eklenebilir
+        us_15_16_page.usageLimitCoupon.sendKeys("5");
+        Assert.assertTrue(us_15_16_page.usageLimitCoupon.getAttribute("value").contains("5"));
+        Thread.sleep(2000);
+        extentReports.createTest("kupon basina kullanim limiti eklenebilir");
 
-        //action.sendKeys(Keys.TAB);
-        tradllyinPage.usageLimitCoupon.sendKeys("5");
-        tradllyinPage.usLimitItems.sendKeys("5");
-        tradllyinPage.perUser.sendKeys("5");
+        //8-  Vendor "Limit usage to X items" limiti bilgileri uygulanabilir
+        us_15_16_page.usLimitItems.sendKeys("15");
+        Assert.assertTrue(us_15_16_page.usLimitItems.getAttribute("value").contains("15"));
+        Thread.sleep(2000);
+        extentReports.createTest("kullanimi belirlenen urunlerle uygulanabildi");
 
-        Assert.assertTrue(tradllyinPage.usageLimitCoupon.getAttribute("value").contains("5"));
-        Assert.assertTrue(tradllyinPage.usLimitItems.getAttribute("value").contains("5"));
-        Assert.assertTrue(tradllyinPage.perUser.getAttribute("value").contains("5"));
-        //Driver.closeDriver();
+        //8- Vendor "Usage limit per user" limit bilgileri uygulanabilir
+        us_15_16_page.perUser.sendKeys("10");
+        Thread.sleep(2000);
+        Assert.assertTrue(us_15_16_page.perUser.getAttribute("value").contains("10"));
+        extentReports.createTest("kullanici basina kullanim siniri uygulanabildi");
 
-
-
+        Driver.closeDriver();
     }
 }

@@ -6,8 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 import utulities.Driver;
 
 
-public class TradllyinPage {
-    public TradllyinPage() {
+public class US_15_16_Page {
+    public US_15_16_Page() {
         PageFactory.initElements(Driver.getDriver(), this);
 
     }
@@ -54,7 +54,7 @@ public class TradllyinPage {
     @FindBy(xpath = "//span[contains(text(),'müşteriler')]")
     public WebElement customers;
 
-    @FindBy(xpath = "//td[@class='dataTables_empty']")
+    @FindBy(xpath = "//tbody/tr[3]")
     public WebElement sonSiparis;
 
 
@@ -84,4 +84,9 @@ public class TradllyinPage {
 
     @FindBy(xpath = "//span[normalize-space()='CSV']")
     public WebElement csaButon;
+
+    @FindBy(xpath = "//span[normalize-space()='Logout']")
+    public WebElement logout;
 }
+
+

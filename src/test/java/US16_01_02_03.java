@@ -1,118 +1,146 @@
 
 import com.github.javafaker.Faker;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.TradllyinPage;
+import pages.US_15_16_Page;
 import utulities.ConfigReader;
 import utulities.Driver;
 import utulities.ReusableMethods;
+import utulities.TestBaseRapor;
 
-public class US16_01_02_03 {
+public class US16_01_02_03 extends TestBaseRapor {
 
-    TradllyinPage tradllyinPage = new TradllyinPage();
+    US_15_16_Page us_15_16_page = new US_15_16_Page();
 
     @Test
     public void TestCase01() throws InterruptedException {
 
 
-        //1-Siteye git:https://tradylinn.com/ gidilebilir
+        //1- Siteye git:https://tradylinn.com/ gidilebilir
         Driver.getDriver().get(ConfigReader.getProperty("tradllyinnUrl"));
+        extentReports.createTest("US16_TC_01","Gecerli email ve sifre ile giris yapabilmeli");
 
         //2 -Vendor "My Account" butonuna tiklanir
-        tradllyinPage.myAccount.click();
+        us_15_16_page.myAccount.click();
 
         //3- Vendor "username or email address" ve "password" bilgileri girer ve "login" butonuna tiklanir
-        tradllyinPage.username.sendKeys(ConfigReader.getProperty("tradllyinnEmail"));
-        tradllyinPage.password.sendKeys(ConfigReader.getProperty("tradllyinnPassword"));
-        tradllyinPage.login.click();
+        us_15_16_page.username.sendKeys(ConfigReader.getProperty("tradllyinnEmail"));
+        us_15_16_page.password.sendKeys(ConfigReader.getProperty("tradllyinnPassword"));
+        ReusableMethods.waitFor(10);
+        us_15_16_page.login.sendKeys(Keys.ENTER);
 
         //4-Vendor "Store Manager" butonuna tiklanir
-        //tradllyinPage.storeManager.sendKeys(Keys.ENTER);
+        us_15_16_page.storeManager.click();
 
         //5-Vendor "customers" butonuna tiklanir
-        //Thread.sleep(3000);
-        //Actions actions=new Actions(Driver.getDriver());
-        //actions.sendKeys(Keys.PAGE_DOWN).perform();
-        //tradllyinPage.customers.sendKeys(Keys.ENTER);
+        Actions actions=new Actions(Driver.getDriver());
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.waitFor(10);
+        us_15_16_page.customers.click();
 
 
         //6- kayitli kisinin son siparisi gorulebilmeli
+        Assert.assertTrue(us_15_16_page.sonSiparis.isDisplayed());
+        extentReports.createTest("kayitli kisinin son siparisi gorulebildi");
 
+        ReusableMethods.waitFor(10);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.waitFor(10);
+        us_15_16_page.logout.click();
+        //Driver.closeDriver();
 
-        //Assert.assertFalse(tradllyinPage.sonSiparis.isDisplayed());
-
-        Driver.closeDriver();
     }
 
     @Test
     public void TestCase02() throws InterruptedException {
-
-        //1-Siteye git:https://tradylinn.com/ gidilebilir
+/*
+        //1- Siteye git:https://tradylinn.com/ gidilebilir
         Driver.getDriver().get(ConfigReader.getProperty("tradllyinnUrl"));
+        extentReports.createTest("US15_TC_01_02_03","Gecerli email ve sifre ile giris yapabilmeli");
 
         //2 -Vendor "My Account" butonuna tiklanir
-        tradllyinPage.myAccount.click();
+        us_15_16_page.myAccount.click();
+        Thread.sleep(3000);
 
+ */
         //3- Vendor "username or email address" ve "password" bilgileri girer ve "login" butonuna tiklanir
-        tradllyinPage.username.sendKeys(ConfigReader.getProperty("tradllyinnEmail"));
-        tradllyinPage.password.sendKeys(ConfigReader.getProperty("tradllyinnPassword"));
-        tradllyinPage.login.click();
+        us_15_16_page.username.sendKeys(ConfigReader.getProperty("tradllyinnEmail"));
+        us_15_16_page.password.sendKeys(ConfigReader.getProperty("tradllyinnPassword"));
+
+
+        //ReusableMethods.waitFor(10);
+        us_15_16_page.login.sendKeys(Keys.ENTER);
 
         //4-Vendor "Store Manager" butonuna tiklanir
-        tradllyinPage.storeManager.sendKeys(Keys.ENTER);
+        us_15_16_page.storeManager.click();
 
         //5-Vendor "customers" butonuna tiklanir
         Actions actions=new Actions(Driver.getDriver());
         actions.sendKeys(Keys.PAGE_DOWN).perform();
-        tradllyinPage.customers.sendKeys(Keys.ENTER);
+        ReusableMethods.waitFor(10);
+        us_15_16_page.customers.click();
 
         //6- kayitli kisilerin bilgileri "pdf" "excell" ve "csa" olarak tiklanir
-        tradllyinPage.printButon.click();
-        tradllyinPage.excelButon.click();
-        tradllyinPage.csaButon.click();
-    }
+        us_15_16_page.printButon.click();
+        us_15_16_page.excelButon.click();
+        us_15_16_page.csaButon.click();
+        extentReports.createTest("kayitli kisilerin bilgileri \"pdf\" \"excell\" ve \"csa\" olarak tiklandi ");
 
+        ReusableMethods.waitFor(10);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.waitFor(10);
+        us_15_16_page.logout.click();
+        Driver.closeDriver();
+    }
+/*
     @Test
     public void TestCase03() throws InterruptedException {
 
-        //1-Siteye git:https://tradylinn.com/ gidilebilir
+        //1- Siteye git:https://tradylinn.com/ gidilebilir
         Driver.getDriver().get(ConfigReader.getProperty("tradllyinnUrl"));
+        extentReports.createTest("US15_TC_01_02_03","Gecerli email ve sifre ile giris yapabilmeli");
 
         //2 -Vendor "My Account" butonuna tiklanir
-        tradllyinPage.myAccount.click();
+        us_15_16_page.myAccount.click();
 
         //3- Vendor "username or email address" ve "password" bilgileri girer ve "login" butonuna tiklanir
-        tradllyinPage.username.sendKeys(ConfigReader.getProperty("tradllyinnEmail"));
-        tradllyinPage.password.sendKeys(ConfigReader.getProperty("tradllyinnPassword"));
-        tradllyinPage.login.click();
+        us_15_16_page.username.sendKeys(ConfigReader.getProperty("tradllyinnEmail"));
+        us_15_16_page.password.sendKeys(ConfigReader.getProperty("tradllyinnPassword"));
+        ReusableMethods.waitFor(1);
+        us_15_16_page.login.sendKeys(Keys.ENTER);
 
         //4-Vendor "Store Manager" butonuna tiklanir
-        tradllyinPage.storeManager.sendKeys(Keys.ENTER);
+        us_15_16_page.storeManager.click();
 
         //5-Vendor "customers" butonuna tiklanir
         Actions actions=new Actions(Driver.getDriver());
         actions.sendKeys(Keys.PAGE_DOWN).perform();
-        tradllyinPage.customers.sendKeys(Keys.ENTER);
+        ReusableMethods.waitFor(10);
+        us_15_16_page.customers.click();
+
         //6-  "Add New Customer " butonuna tiklanir
-        tradllyinPage.newCustomers.click();
+        us_15_16_page.newCustomers.click();
 
         //7- Kullanici bilgileri username,email,name ve lastname girilebilir
+        Actions actions=new Actions(Driver.getDriver());
         Faker faker=new Faker();
-        actions.sendKeys(faker.internet().avatar())
+        actions.click(us_15_16_page.newUsername).
+                sendKeys(faker.internet().domainName())
                 .sendKeys(Keys.TAB)
                 .sendKeys(faker.internet().emailAddress())
-                .sendKeys(Keys.ENTER)
+                .sendKeys(Keys.TAB)
                 .sendKeys(faker.internet().domainName())
                 .sendKeys(Keys.TAB)
-                .sendKeys(faker.internet().domainWord()).perform();
+                .sendKeys(faker.internet().domainName()).perform();
+        extentReports.createTest("Kullanici bilgileri username,email,name ve lastname girilebildi");
 
         //8- "submit" butonuna tiklanir
-        tradllyinPage.submit.click();
+        ReusableMethods.waitFor(10);
+        us_15_16_page.submit.sendKeys(Keys.ENTER);
 
-
+*/
     }
 
-}
+
