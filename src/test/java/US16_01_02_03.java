@@ -16,8 +16,9 @@ import utulities.TestBaseRapor;
 public class US16_01_02_03 extends TestBaseRapor {
 
     US_15_16_Page us_15_16_page = new US_15_16_Page();
+    JavascriptExecutor jse = (JavascriptExecutor)Driver.getDriver();
 
-    @Test(priority = 1)
+    @Test
     public void TC_01() throws InterruptedException {
 
         //1- Siteye git:https://tradylinn.com/ gidilebilir
@@ -26,36 +27,37 @@ public class US16_01_02_03 extends TestBaseRapor {
 
         //2 -Vendor "My Account" butonuna tiklanir
         us_15_16_page.myAccount.click();
+        extentTest.info("Vendor My Account butonuna tikladi");
 
         //3- Vendor "username or email address" ve "password" bilgileri girer ve "login" butonuna tiklanir
         us_15_16_page.username.sendKeys(ConfigReader.getProperty("tradllyinnEmail"));
         us_15_16_page.password.sendKeys(ConfigReader.getProperty("tradllyinnPassword"));
         ReusableMethods.waitFor(10);
         us_15_16_page.login.sendKeys(Keys.ENTER);
+        extentTest.info("Vendor username or email address ve password bilgileri girdi ve login butonuna tikladi");
 
         //4-Vendor "Store Manager" butonuna tiklanir
         //us_15_16_page.storeManager.click();
-
-        JavascriptExecutor jse = (JavascriptExecutor)Driver.getDriver();
+        extentTest.info("Vendor Store Manager butonuna tikladi");
         WebElement storeManager= Driver.getDriver().findElement(By.xpath("//a[normalize-space()='Store Manager']"));
         jse.executeScript("arguments[0].click();",storeManager);
-
 
         //5-Vendor "customers" butonuna tiklanir
         Actions actions = new Actions(Driver.getDriver());
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.waitFor(10);
         us_15_16_page.customers.click();
+        extentTest.info("Vendor customers butonuna tikladi");
 
         //6- kayitli kisinin son siparisi gorulebilmeli
         Assert.assertTrue(us_15_16_page.sonSiparis.isDisplayed());
-        extentReports.createTest("kayitli kisinin son siparisi gorulebildi");
-
+        extentTest.pass("kayitli kisinin son siparisi gorulebildi");
         ReusableMethods.waitFor(5);
         Driver.closeDriver();
+
     }
 
-    @Test(dependsOnMethods = "TC_01",priority = 4)
+    @Test
     public void TC_02() throws InterruptedException {
 
         //1- Siteye git:https://tradylinn.com/ gidilebilir
@@ -64,22 +66,22 @@ public class US16_01_02_03 extends TestBaseRapor {
 
         //2 -Vendor "My Account" butonuna tiklanir
         ReusableMethods.waitFor(5);
-        //us_15_16_page.myAccount.click();
-        JavascriptExecutor jse = (JavascriptExecutor)Driver.getDriver();
         WebElement myAccount= Driver.getDriver().findElement(By.xpath("//li[@id='menu-item-1074']//a[contains(text(),'Hesabım')]"));
         jse.executeScript("arguments[0].click();",myAccount);
+        extentTest.info("Vendor My Account butonuna tikladi");
 
         //3- Vendor "username or email address" ve "password" bilgileri girer ve "login" butonuna tiklanir
         ReusableMethods.waitFor(5);
         us_15_16_page.username.sendKeys(ConfigReader.getProperty("tradllyinnEmail"));
         us_15_16_page.password.sendKeys(ConfigReader.getProperty("tradllyinnPassword"));
-
         ReusableMethods.waitFor(10);
         us_15_16_page.login.sendKeys(Keys.ENTER);
+        extentTest.info("Vendor username or email address ve password bilgileri girer ve login butonuna tikladi");
 
         //4-Vendor "Store Manager" butonuna tiklanir
         ReusableMethods.waitFor(10);
         us_15_16_page.storeManager.click();
+        extentTest.info("Vendor Store Manager butonuna tiklandi");
 
         //5-Vendor "customers" butonuna tiklanir
         ReusableMethods.waitFor(10);
