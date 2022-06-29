@@ -55,7 +55,7 @@ public class US16_01_02_03 extends TestBaseRapor {
         Driver.closeDriver();
     }
 
-    @Test(dependsOnMethods = "TC_01",priority = 2)
+    @Test(dependsOnMethods = "TC_01",priority = 4)
     public void TC_02() throws InterruptedException {
 
         //1- Siteye git:https://tradylinn.com/ gidilebilir
@@ -97,7 +97,7 @@ public class US16_01_02_03 extends TestBaseRapor {
         Driver.closeDriver();
     }
 
-    @Test(dependsOnMethods = "TC_02",priority = 3)
+    @Test
     public void TC_03() throws InterruptedException {
 
         //1- Siteye git:https://tradylinn.com/ gidilebilir
