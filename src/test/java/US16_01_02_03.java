@@ -68,8 +68,9 @@ public class US16_01_02_03 extends TestBaseRapor {
         ReusableMethods.waitFor(5);
         //WebElement myAccount= Driver.getDriver().findElement(By.xpath("//li[@id='menu-item-1074']//a[contains(text(),'Hesabım')]"));
         //jse.executeScript("arguments[0].click();",myAccount);
-        //us_15_16_page.myAccount.click();
-        us_15_16_page.myAccount.sendKeys(Keys.ENTER);
+
+        us_15_16_page.myAccount.click();
+        //us_15_16_page.myAccount.sendKeys(Keys.ENTER);
         extentTest.info("Vendor My Account butonuna tikladi");
 
         //3- Vendor "username or email address" ve "password" bilgileri girer ve "login" butonuna tiklanir
