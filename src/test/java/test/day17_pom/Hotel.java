@@ -11,6 +11,7 @@ public class Hotel {
     @Test
     public void test01() {
         HotelPage hotelPage=new HotelPage();
+
         // https://www.hotelmycamp.com/ adresine git
         Driver.getDriver().get("https://www.hotelmycamp.com/");
         // login butonuna bas

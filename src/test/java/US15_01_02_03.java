@@ -18,16 +18,17 @@ public class US15_01_02_03 extends TestBaseRapor {
     public void US15_TC_01_02_03() throws InterruptedException, IOException {
 
         Driver.getDriver().get(ConfigReader.getProperty("tradllyinnUrl"));
-        extentReports.createTest("US15_TC_01_02_03","Gecerli email ve sifre ile giris yapabildi");
+        extentTest=extentReports.createTest("US15_TC_01_02_03","Gecerli email ve sifre ile giris yapabildi");
         us_15_16_page.myAccount.click();
-        extentTest.info("My Account butonu erisilebildi");
+        extentTest.pass("My Account butonu erisilebildi");
+
         us_15_16_page.username.sendKeys(ConfigReader.getProperty("tradllyinnEmail"));
         us_15_16_page.password.sendKeys(ConfigReader.getProperty("tradllyinnPassword"));
         ReusableMethods.waitFor(1);
         us_15_16_page.login.sendKeys(Keys.ENTER);
-        extentTest.info("Vendor bu bilgilerle Login butonu erisebildi");
+        extentTest.pass("Vendor bu bilgilerle Login butonu erisebildi");
         us_15_16_page.storeManager.click();
-        extentTest.info("Store Manger butonu erisilebildi");
+        extentTest.pass("Store Manger butonu erisilebildi");
         us_15_16_page.coupons.sendKeys(Keys.ENTER);
         ReusableMethods.waitFor(10);
         extentTest.info("Coupons butonu erisilebildi");
@@ -39,19 +40,20 @@ public class US15_01_02_03 extends TestBaseRapor {
         us_15_16_page.limit.click();
         extentTest.info("limit butonu erisilebildi");
         us_15_16_page.usageLimitCoupon.sendKeys("5");
-        Assert.assertTrue(us_15_16_page.usageLimitCoupon.getAttribute("value").contains("5"));
+        Assert.assertTrue(us_15_16_page.usageLimitCoupon.getAttribute("value").equals("5"));
         extentTest.info("limit bilgileri eklenebildi");
         Thread.sleep(2000);
         extentReports.createTest("kupon basina kullanim limiti eklenebilir");
         us_15_16_page.usLimitItems.sendKeys("15");
-        Assert.assertTrue(us_15_16_page.usLimitItems.getAttribute("value").contains("15"));
+        Assert.assertTrue(us_15_16_page.usLimitItems.getAttribute("value").equals("15"));
         Thread.sleep(2000);
         extentReports.createTest("kullanimi belirlenen urunlerle uygulanabildi");
         us_15_16_page.perUser.sendKeys("10");
         Thread.sleep(2000);
-        Assert.assertTrue(us_15_16_page.perUser.getAttribute("value").contains("10"));
+        Assert.assertTrue(us_15_16_page.perUser.getAttribute("value").equals("10"));
         extentReports.createTest("kullanici basina kullanim siniri uygulanabildi");
         ReusableMethods.getScreenshot("Limit uygulama");
         Driver.closeDriver();
+
     }
 }

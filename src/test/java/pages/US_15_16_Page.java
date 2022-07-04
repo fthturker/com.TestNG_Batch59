@@ -54,7 +54,7 @@ public class US_15_16_Page {
     @FindBy(xpath = "//span[contains(text(),'müşteriler')]")
     public WebElement customers;
 
-    @FindBy(xpath = "//tbody/tr[3]")
+    @FindBy(xpath = "//th[@aria-label='Name']")
     public WebElement sonSiparis;
 
 
